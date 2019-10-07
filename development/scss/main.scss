@@ -61,9 +61,6 @@ header {
   .slide {
     display: none;
     width: 50%;
-    .visible {
-      display: block;
-    }
     h2 {
       display: flex;
       justify-content: center;
@@ -75,5 +72,5 @@ header {
       font-size: 25px;
     }
   }
-
 }
+
