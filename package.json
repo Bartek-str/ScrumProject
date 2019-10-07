@@ -1,5 +1,5 @@
 {
-  "name": "fer_scrum_lab",
+  "name": "Zaplanuj-Jedzonko",
   "version": "1.0.0",
   "description": "Front-End ScrumLab",
   "main": "index.js",
@@ -10,7 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/CodersLab-core/FER_SCRUM_LAB.git"
   },
-  "author": "Michał T",
+  "author": [
+    "Szymon Franczak",
+    "Bartłomiej Strużyk",
+    "Michał Rożdżyński",
+    "Wojciech "
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CodersLab-core/FER_SCRUM_LAB/issues"
