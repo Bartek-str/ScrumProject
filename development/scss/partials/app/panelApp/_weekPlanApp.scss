@@ -1,0 +1,33 @@
+.dashboard {
+  .screen {
+    .anotherTime {
+      .container {
+        .top {
+          margin-bottom: 30px;
+        }
+        .bottom {
+          width: 100%;
+          height: calc(100% - (30px + 28%));
+          background-color: $color-screen-background;
+          border: 1px dashed $color-row-font;
+          .plan {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            height: 10%;
+            border-bottom: 1px solid rgba(161, 161, 148, 0.5);
+            margin: 0 auto;
+            h2 {
+              font-size: 20px;
+              color: $color-highlights;
+              span {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

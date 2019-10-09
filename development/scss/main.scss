@@ -19,5 +19,7 @@
 
 // Aplikacja
 
-@import "partials/headerApp";
-@import "partials/panelApp";
+@import "partials/app/headerApp";
+@import "partials/app/panelApp/menuApp";
+@import "partials/app/panelApp/widgetsApp";
+@import "partials/app/panelApp/weekPlanApp";
