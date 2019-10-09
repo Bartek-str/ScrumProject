@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         name.innerHTML
     }else{
         name.innerHTML = localStorage.getItem("User Name");
-    }
-         
+        name.style.textTransform = "capitalize";
+    }  
 });
 
