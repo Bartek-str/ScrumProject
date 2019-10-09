@@ -7,5 +7,65 @@
     width: 20%;
     height: calc(100vh - (57px + 31px));
     background-color: $color-nav;
+    .pulpit {
+      border-left: 5px solid $color-logo-orange;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      h2 {
+        font-size: 25px;
+        margin: 25px 15px;
+        color: $color-logo-white;
+        font-weight: bold;
+      }
+      i {
+        font-size: 25px;
+        margin: 25px 15px;
+        color: $color-logo-orange;
+        font-weight: bold;
+      }
+    }
+    .przepisy {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      h2 {
+        font-size: 25px;
+        margin: 25px 20px;
+        color: $color-logo-white;
+      }
+      i {
+        font-size: 25px;
+        margin: 25px 15px;
+        color: $color-logo-orange;
+        font-weight: bold;
+        display: none;
+      }
+    }
+    .plany {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      h2 {
+        font-size: 25px;
+        margin: 25px 20px;
+        color: $color-logo-white;
+      }
+      i {
+        font-size: 25px;
+        margin: 25px 15px;
+        color: $color-logo-orange;
+        font-weight: bold;
+        display: none;
+      }
+    }
+  }
+  .screen {
+    width: 80%;
+    height: calc(100vh - (57px + 31px));
+    background-image: url("https://trello-attachments.s3.amazonaws.com/5d9754a7237ffc3fac77c990/5d9754a8237ffc3fac77ca03/500x500/61283ee4504d391acc94c3016da8999f/image.png");
   }
 }
