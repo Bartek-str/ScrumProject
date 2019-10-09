@@ -1,0 +1,11 @@
+.dashboard {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: $color-screen-background;
+  .panelApp {
+    width: 20%;
+    height: calc(100vh - (57px + 31px));
+    background-color: $color-nav;
+  }
+}

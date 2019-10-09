@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Karuzela
+
    var arrowLeft = document.getElementById('arrowLeft');
    var arrowRight = document.getElementById('arrowRight');
    var slides = document.querySelectorAll('.carousel .slide');
@@ -45,4 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
            slides[idSlide].style.display = 'block';
        }, 1500)
    }
+
+   //
+
+
 });
