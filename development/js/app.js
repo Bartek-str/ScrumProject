@@ -7,4 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault()
             localStorage.setItem("User Name", newUser.value);
     }
+
+    var name = document.querySelector(".name");
+    if (localStorage.getItem("User Name") == null){
+        name.innerHTML
+    }else{
+        name.innerHTML = localStorage.getItem("User Name");
+    }
+         
 });
+
