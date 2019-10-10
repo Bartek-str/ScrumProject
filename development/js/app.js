@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveNewUser(event){
         event.preventDefault()
-        localStorage.setItem("User Name", newUser.value);
+            localStorage.setItem("User Name", newUser.value);
+            window.location.reload(false);
     }
 
     var name = document.querySelector(".name");
