@@ -25,19 +25,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveNewUser(event){
         event.preventDefault()
-        localStorage.setItem("User Name", newUser.value);
+        localStorage.setItem("UserName", newUser.value);
         content.style.display = "none";
         screen.style.display = "block";
-    
-
-        if (localStorage.getItem("User Name") == null){
+        if (localStorage.getItem("UserName") == null){
             name.innerHTML
         }else{
-            name.innerHTML = localStorage.getItem("User Name");
+            name.innerHTML = localStorage.getItem("UserName");
             name.style.textTransform = "capitalize";
         }
-
-
+    }
+    if(localStorage.getItem("UserName")!= null){
+        content.style.display = "none";
+        screen.style.display = "block";
+        name.innerHTML = localStorage.getItem("UserName");
+            name.style.textTransform = "capitalize";
     }
 
 
