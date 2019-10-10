@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-      <div class="screen ">
+      <div class="screen">
         <div class="firstTime"></div>
         <div class="anotherTime">
           <div class="container">
@@ -161,15 +161,17 @@
               </div>
             </div>
           </div>
-          <div class="text">
-              <p>Podaj nam swoje imię, a my zorganizujemy dla Ciebie naszą aplikację :&rang; </p>
-            </div>
         </div>
         <div class="addPlanSide"></div>
         <div class="addRecipeSide"></div>
       </div>
+<<<<<<< HEAD
+      </div>
+
+=======
       <div class="recipes"></div>
       <div class="plans"></div>
+>>>>>>> 9f7267f0265343c9b1bf73974dbbac692227a820
     </section>
 
     <script src="./js/app.js"></script>
