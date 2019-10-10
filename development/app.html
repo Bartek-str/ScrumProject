@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Zaplanuj Jedzonko</title>
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/custom.css" />
   </head>
   <body>
     <header class="headerApp">
@@ -20,37 +20,156 @@
 
     <section class="dashboard">
       <div class="panelApp">
-        <div class="pulpit">
-          <h2></h2>
+        <div class="pulpit highlight">
+          <h2>Pulpit</h2>
+          <i class="fas fa-chevron-right"></i>
         </div>
         <div class="przepisy">
-          <h2></h2>
+          <h2>Przepisy</h2>
+          <i class="fas fa-chevron-right"></i>
         </div>
         <div class="plany">
-          <h2></h2>
+          <h2>Plany</h2>
+          <i class="fas fa-chevron-right"></i>
         </div>
       </div>
-      <div class="content">
-        <div class="white-screen">
-          <div class="message-and-form">
-            <div class="message">
-              <h3>Witaj,</h3>
-              <p>
-                wygląda na to, że jesteś tutaj pierwszy raz!
-              </p>
+        <div class="content">
+            <div class="white-screen">
+                <div class="message-and-form">
+                    <div class="message">
+                        <h3>Witaj,</h3>
+                        <p>
+                            wygląda na to, że jesteś tutaj pierwszy raz!
+                        </p>
+                    </div>
+                    <form>
+                        <input id="newUser" type="text" size="20" placeholder="tutaj wpisz jak masz na imię dziku xD"/>
+                        <input id="newUserBtn"type="button" name="sendName" value="Gotowe!"/>
+                    </form>
+                </div>
+                <div class="text">
+                    <p>Podaj nam swoje imię, a my zorganizujemy dla Ciebie naszą aplikację :&rang; </p>
+                </div>
             </div>
-            <form>
-                <input id="newUser" type="text" size="20" placeholder="tutaj wpisz jak masz na imię dziku xD"/>
-                <input id="newUserBtn"type="button" name="sendName" value="Gotowe!"/>
-            </form>
+        </div>
+      <div class="screen">
+        <div class="firstTime"></div>
+        <div class="anotherTime">
+          <div class="container">
+            <div class="top">
+              <div class="addRecipe">
+                <i class="far fa-plus-square"></i>
+                <p>dodaj przepis</p>
+              </div>
+              <div class="addPlan">
+                <i class="far fa-plus-square"></i>
+                <p>dodaj plan</p>
+              </div>
+              <div class="alerts">
+                <div class="alertRecipes">
+                  <i class="fas fa-info-circle"></i>
+                  <p>Masz już 99 przepisów, nieźle!</p>
+                  <div class="times">
+                    <i class="fas fa-times"></i>
+                  </div>
+                </div>
+                <div class="alertPlan">
+                  <i class="fas fa-exclamation-circle"></i>
+                  <p>Pamiętaj, aby dodać plan!</p>
+                  <div class="times">
+                    <i class="fas fa-times"></i>
+                  </div>
+                </div>
+                <div class="alertGood">
+                  <i class="fas fa-check-circle"></i>
+                  <p>Świetnie że jesteś! Udanego planowania i smaczego! :)</p>
+                  <div class="times">
+                    <i class="fas fa-times"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="plan">
+                <div class="planTitle">
+                  <h2>Twój plan na <span>{nr_tygodnia}</span> tydzień:</h2>
+                </div>
+                <div class="days">
+                  <p>Poniedziałek</p>
+                  <p>Wtorek</p>
+                  <p>Środa</p>
+                  <p>Czwartek</p>
+                  <p>Piątek</p>
+                  <p>Sobota</p>
+                  <p>Niedziela</p>
+                </div>
+                <div class="breakfast">
+                  <p>śniadanie</p>
+                  <p>śniadanie</p>
+                  <p>śniadanie</p>
+                  <p>śniadanie</p>
+                  <p>śniadanie</p>
+                  <p>śniadanie</p>
+                  <p>śniadanie</p>
+                </div>
+                <div class="secondBreakfast">
+                  <p>drugie śniadanie</p>
+                  <p>drugie śniadanie</p>
+                  <p>drugie śniadanie</p>
+                  <p>drugie śniadanie</p>
+                  <p>drugie śniadanie</p>
+                  <p>drugie śniadanie</p>
+                  <p>drugie śniadanie</p>
+                </div>
+                <div class="soup">
+                  <p>zupa</p>
+                  <p>zupa</p>
+                  <p>zupa</p>
+                  <p>zupa</p>
+                  <p>zupa</p>
+                  <p>zupa</p>
+                  <p>zupa</p>
+                </div>
+                <div class="secondMeal">
+                  <p>drugie<br>danie</p>
+                  <p>drugie<br>danie</p>
+                  <p>drugie<br>danie</p>
+                  <p>drugie<br>danie</p>
+                  <p>drugie<br>danie</p>
+                  <p>drugie<br>danie</p>
+                  <p>drugie<br>danie</p>
+                </div>
+                <div class="diner">
+                  <p>kolacja</p>
+                  <p>kolacja</p>
+                  <p>kolacja</p>
+                  <p>kolacja</p>
+                  <p>kolacja</p>
+                  <p>kolacja</p>
+                  <p>kolacja</p>
+                </div>
+              </div>
+              <div class="prevNext">
+                <div class="prev">
+                  <i class="fas fa-angle-double-left"></i>
+                  <p>poprzedni</p>
+                </div>
+                <div class="next">
+                  <p>następny</p>
+                  <i class="fas fa-angle-double-right"></i>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="text">
               <p>Podaj nam swoje imię, a my zorganizujemy dla Ciebie naszą aplikację :&rang; </p>
             </div>
         </div>
+        <div class="addPlanSide"></div>
+        <div class="addRecipeSide"></div>
       </div>
-      </div>
-
+      <div class="recipes"></div>
+      <div class="plans"></div>
     </section>
 
     <script src="./js/app.js"></script>
