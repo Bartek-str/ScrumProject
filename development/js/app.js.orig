@@ -15,9 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var planyI = plany.querySelector('i');
     var newUserBtn = document.querySelector('#newUserBtn');
     var newUser = document.querySelector('#newUser');
-    var content = document.querySelector('.content');
-    var screen = document.querySelector('.screen');
-    var name = document.querySelector(".name");
 
     // pobranie i zmiana imienia
 
@@ -25,22 +22,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveNewUser(event){
         event.preventDefault()
+<<<<<<< HEAD
+            localStorage.setItem("User Name", newUser.value);
+            window.location.reload(false);
+=======
         localStorage.setItem("User Name", newUser.value);
-        content.style.display = "none";
-        screen.style.display = "block";
-    
-
-        if (localStorage.getItem("User Name") == null){
-            name.innerHTML
-        }else{
-            name.innerHTML = localStorage.getItem("User Name");
-            name.style.textTransform = "capitalize";
-        }
-
-
+>>>>>>> 9f7267f0265343c9b1bf73974dbbac692227a820
     }
 
-
+    var name = document.querySelector(".name");
+    if (localStorage.getItem("User Name") == null){
+        name.innerHTML
+    }else{
+        name.innerHTML = localStorage.getItem("User Name");
+        name.style.textTransform = "capitalize";
+    }
     // menu
 
     przepisyI.style.display = 'none';
@@ -86,5 +82,4 @@ document.addEventListener('DOMContentLoaded', function () {
             przepisy.classList.remove('highlight');
             przepisyI.style.display = 'none';
         }
-    })
-})
+    });
