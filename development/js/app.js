@@ -13,7 +13,25 @@ document.addEventListener('DOMContentLoaded', function () {
     var przepisyI = przepisy.querySelector('i');
     var plany = document.querySelector('.plany');
     var planyI = plany.querySelector('i');
+    var newUserBtn = document.querySelector('#newUserBtn');
+    var newUser = document.querySelector('#newUser');
 
+    // pobranie i zmiana imienia
+
+    newUserBtn.addEventListener('click', saveNewUser);
+
+    function saveNewUser(event){
+        event.preventDefault()
+        localStorage.setItem("User Name", newUser.value);
+    }
+
+    var name = document.querySelector(".name");
+    if (localStorage.getItem("User Name") == null){
+        name.innerHTML
+    }else{
+        name.innerHTML = localStorage.getItem("User Name");
+        name.style.textTransform = "capitalize";
+    }
     // menu
 
     przepisyI.style.display = 'none';
@@ -60,19 +78,3 @@ document.addEventListener('DOMContentLoaded', function () {
             przepisyI.style.display = 'none';
         }
     });
-
-    // widget 'dodaj przepis'
-
-    addRecipe.addEventListener('click', function (event) {
-        anotherTime.style.display = 'none';
-        addPlanSide.style.display = 'block';
-    });
-
-    // widget 'dodaj plan'
-
-    addPlan.addEventListener('click', function (event) {
-        anotherTime.style.display = 'none';
-        addPlanSide.style.display = 'block';
-    });
-
-});
