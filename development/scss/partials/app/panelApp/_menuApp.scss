@@ -9,24 +9,25 @@
     height: calc(100vh - (57px + 31px));
     background-color: $color-nav;
 
-    .pulpit {
-      border-left: 5px solid $color-highlights;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row;
-
-      h2 {
-        font-size: 25px;
-        margin: 25px 15px;
-        color: $color-logo-white;
-        font-weight: bold;
-      }
-
+    .highlight {
+      border-left: 5px solid $color-highlights;;
       i {
         font-size: 25px;
         margin: 25px 15px;
         color: $color-highlights;
+        font-weight: bold;
+      }
+    }
+
+    .pulpit {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      h2 {
+        font-size: 25px;
+        margin: 25px 15px;
+        color: $color-logo-white;
         font-weight: bold;
       }
     }
@@ -36,19 +37,10 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row;
-
       h2 {
         font-size: 25px;
         margin: 25px 20px;
         color: $color-logo-white;
-      }
-
-      i {
-        font-size: 25px;
-        margin: 25px 15px;
-        color: $color-highlights;
-        font-weight: bold;
-        display: none;
       }
     }
 
@@ -57,19 +49,10 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row;
-
       h2 {
         font-size: 25px;
         margin: 25px 20px;
         color: $color-logo-white;
-      }
-
-      i {
-        font-size: 25px;
-        margin: 25px 15px;
-        color: $color-highlights;
-        font-weight: bold;
-        display: none;
       }
     }
   }
