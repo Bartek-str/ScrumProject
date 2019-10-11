@@ -24,3 +24,6 @@ css/
 .idea/
 
 css/
+
+###conflicts###
+*.orig

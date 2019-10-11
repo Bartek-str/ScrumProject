@@ -88,5 +88,26 @@ document.addEventListener('DOMContentLoaded', function () {
             przepisy.classList.remove('highlight');
             przepisyI.style.display = 'none';
         }
-    })
+    });
+
+    //add recipes
+    var addRecipesBtn = document.querySelector('.addRecipe');
+    var addRecipesPage = document.querySelector('.add');
+    
+    addRecipesBtn.addEventListener('click', addRecipes);
+
+    function addRecipes(event){
+        screen.style.display = "none";
+        addRecipesPage.style.display = "block";
+    }
+
+
+
+
+
+
+
+
+
+
 })
