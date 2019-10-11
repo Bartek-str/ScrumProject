@@ -107,18 +107,53 @@ document.addEventListener('DOMContentLoaded', function () {
     var addIngridientBtn = document.querySelector("#ingridient-add-btn");
     var ingridient = document.querySelector('.ingridients');
 
+
     //tworzenie nowego li do list 
 
     function createNewIngridient(ingridient){
         var newIngridient = document.createElement("li");
         newIngridient.innerText=ingridient;
         listOfIngridients.appendChild(newIngridient);
+
+    //tworzenie przycisków usuwania i dodawania
+
+        var edit = document.createElement("i");
+        edit.classList.add('far');
+        edit.classList.add('fa-edit');
+        var editBtn = document.createElement("a");
+        editBtn.href="#";
+        editBtn.appendChild(edit);
+        var del = document.createElement("i");
+        del.classList.add('far');
+        del.classList.add('fa-trash-alt');
+        var delBtn = document.createElement("a");
+        delBtn.href = "#";
+        delBtn.appendChild(del);
+        newIngridient.appendChild(editBtn);
+        newIngridient.appendChild(delBtn);
     }
 
     function createNewSteps(step){
         var newStep = document.createElement("li");
         newStep.innerText = step;
         listOfStepsRecipe.appendChild(newStep);
+
+            //tworzenie przycisków usuwania i dodawania
+
+    var edit = document.createElement("i"); 
+        edit.classList.add('far');
+        edit.classList.add('fa-edit');
+        var editBtn = document.createElement("a");
+        editBtn.href="#";
+        editBtn.appendChild(edit);
+        var del = document.createElement("i");
+        del.classList.add('far');
+        del.classList.add('fa-trash-alt');
+        var delBtn = document.createElement("a");
+        delBtn.href = "#";
+        delBtn.appendChild(del);
+        newStep.appendChild(editBtn);
+        newStep.appendChild(delBtn);
 
     }
 //funkcja dodawania nowych li po kliknieciu w przycisk
@@ -167,7 +202,7 @@ function saveRecipe(newObj){
         dataFromLocalStorage.push(newObj);
         localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
         }
-        alert("Przepis zapisany");
+        alert("Dziku twój przepis został zapisany");
 }
 
     function saveRecipeLocalStorage(event){
@@ -181,9 +216,6 @@ function saveRecipe(newObj){
     }
 
     saveAndCloseBTN.addEventListener('click', saveRecipeLocalStorage);
-
-
-
 
 })
 
