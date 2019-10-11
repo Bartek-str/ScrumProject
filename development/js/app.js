@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    var addRecipe = document.querySelector('.addRecipe');
+    var addRecipesBtn = document.querySelector('.addRecipe');
+    var addRecipesPage = document.querySelector('.add');
     var addPlan = document.querySelector('.addPlan');
     var addRecipeSide = document.querySelector('.addRecipeSide');
     var addPlanSide = document.querySelector('.addPlanSide');
@@ -91,8 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     //add recipes
-    var addRecipesBtn = document.querySelector('.addRecipe');
-    var addRecipesPage = document.querySelector('.add');
+
     
     addRecipesBtn.addEventListener('click', addRecipes);
 
