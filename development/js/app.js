@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var addPlanSide = document.querySelector('.addPlanSide');
     var anotherTime = document.querySelector('.anotherTime');
     var recipes = document.querySelector('.recipes');
-    var plans = document.querySelector('.plans');
+    var plans = document.querySelector('#plans');
     var pulpit = document.querySelector('.pulpit');
     var pulpitI = pulpit.querySelector('i');
     var przepisy = document.querySelector('.przepisy');
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     przepisy.addEventListener('click', function (event) {
-        recipes.style.display = 'block';
+        // recipes.style.display = 'block';
         anotherTime.style.display = 'none';
         plans.style.display = 'none';
         if (!przepisy.classList.contains('highlight')) {
@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
     plany.addEventListener('click', function (event) {
         plans.style.display = 'block';
         anotherTime.style.display = 'none';
-        recipes.style.display = 'none';
         if (!plany.classList.contains('highlight')) {
             plany.classList.add('highlight');
             planyI.style.display = 'block';
@@ -231,7 +230,6 @@ function saveRecipe(newObj){
         addRecipesPage.style.display = "none";
 
     }
-
     saveAndCloseBTN.addEventListener('click', saveRecipeLocalStorage);
 
 })
