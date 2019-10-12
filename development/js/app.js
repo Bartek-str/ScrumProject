@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     pulpit.addEventListener('click', function (event) {
         anotherTime.style.display = 'block';
-        recipes.style.display = 'none';
+        // recipes.style.display = 'none';
         plans.style.display = 'none';
         if (!pulpit.classList.contains('highlight')) {
             pulpit.classList.add('highlight');
