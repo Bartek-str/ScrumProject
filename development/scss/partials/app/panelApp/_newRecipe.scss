@@ -89,6 +89,11 @@
                     margin-right: 80px;
                     padding: 5px 10px;
                 }
+                #btn-add{
+                    i{
+                        color: darkgreen;
+                    }
+                }
             }
         }
 
@@ -106,12 +111,21 @@
                 font-size: 25px;
                 border-bottom: 1px solid $color-expand-icons;
             }
-
+            .btn-add{
+                width: 10%;
+                i{
+                    color: darkgreen;
+                    font-size: 45px;
+                }
+            }
             ul,
             ol {
                 padding: 0 20px;
                 overflow-y: auto;
                 height: 300px;
+            }
+            ul{
+                list-style: disc;
             }
 
         }
@@ -129,16 +143,12 @@
                     flex-direction: row;
                     padding: 15px 0;
                     align-items: flex-start;
+                    justify-content: space-between;
 
                     .instruction {
-                        width: 85%;
+                        width: 87%;
                         border: 1px solid #A1A194;
                         padding: 10px 5px;
-                    }
-
-                    a {
-                        width: 15%;
-                        padding: 0 20px;
                     }
                 }
             }
@@ -161,14 +171,9 @@
                 }
 
                 .ingridients {
-                    width: 85%;
+                    width: 87%;
                     border: 1px solid #A1A194;
                     padding: 10px 5px;
-                }
-
-                a {
-                    width: 15%;
-                    padding: 0 20px;
                 }
             }
         }

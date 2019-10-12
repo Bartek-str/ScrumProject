@@ -120,17 +120,26 @@ document.addEventListener('DOMContentLoaded', function () {
         var edit = document.createElement("i");
         edit.classList.add('far');
         edit.classList.add('fa-edit');
+        edit.style.fontSize = "16px";
+        edit.style.color = "#FFB03B";
         var editBtn = document.createElement("a");
         editBtn.href="#";
         editBtn.appendChild(edit);
+        editBtn.style.padding = "10px";
+
         var del = document.createElement("i");
         del.classList.add('far');
         del.classList.add('fa-trash-alt');
+        del.style.fontSize = "16px";
+        del.style.color = "#BD4932";
         var delBtn = document.createElement("a");
         delBtn.href = "#";
         delBtn.appendChild(del);
         newIngridient.appendChild(editBtn);
         newIngridient.appendChild(delBtn);
+        delBtn.style.padding = "10px 10px 10px 0";
+        delBtn.style.fontSize = "16px";
+        delBtn.style.color = "$color-trash-icon";
     }
 
     function createNewSteps(step){
@@ -143,17 +152,25 @@ document.addEventListener('DOMContentLoaded', function () {
     var edit = document.createElement("i"); 
         edit.classList.add('far');
         edit.classList.add('fa-edit');
+        edit.style.fontSize = "16px";
+        edit.style.color = "#FFB03B";
         var editBtn = document.createElement("a");
         editBtn.href="#";
         editBtn.appendChild(edit);
+        editBtn.style.padding = "10px";
         var del = document.createElement("i");
         del.classList.add('far');
         del.classList.add('fa-trash-alt');
+        del.style.fontSize = "16px";
+        del.style.color = "#BD4932";
         var delBtn = document.createElement("a");
         delBtn.href = "#";
         delBtn.appendChild(del);
         newStep.appendChild(editBtn);
         newStep.appendChild(delBtn);
+        delBtn.style.padding = "10px 10px 10px 5px";
+        delBtn.style.fontSize = "16px";
+
 
     }
 //funkcja dodawania nowych li po kliknieciu w przycisk
