@@ -24,6 +24,7 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row;
+      cursor: pointer;
       h2 {
         font-size: 25px;
         margin: 25px 15px;
@@ -37,10 +38,12 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row;
+      cursor: pointer;
       h2 {
         font-size: 25px;
         margin: 25px 20px;
         color: $color-logo-white;
+;
       }
     }
 
@@ -49,6 +52,7 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row;
+      cursor: pointer;
       h2 {
         font-size: 25px;
         margin: 25px 20px;
