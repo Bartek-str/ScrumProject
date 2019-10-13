@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         editBtn.href="#";
         editBtn.appendChild(edit);
         editBtn.style.padding = "10px";
+        editBtn.classList.add("edit");
 
         var del = document.createElement("i");
         del.classList.add('far');
@@ -139,6 +140,11 @@ document.addEventListener('DOMContentLoaded', function () {
         delBtn.style.padding = "10px 10px 10px 0";
         delBtn.style.fontSize = "16px";
         delBtn.style.color = "$color-trash-icon";
+            //usuwanie li w listach
+        delBtn.classList.add("trash");
+        delBtn.addEventListener('click', function(){
+            this.parentNode.parentNode.removeChild(this.parentNode);
+            })
     }
 
     function createNewSteps(step){
@@ -157,6 +163,8 @@ document.addEventListener('DOMContentLoaded', function () {
         editBtn.href="#";
         editBtn.appendChild(edit);
         editBtn.style.padding = "10px";
+        editBtn.classList.add("edit");
+
         var del = document.createElement("i");
         del.classList.add('far');
         del.classList.add('fa-trash-alt');
@@ -169,8 +177,11 @@ document.addEventListener('DOMContentLoaded', function () {
         newStep.appendChild(delBtn);
         delBtn.style.padding = "10px 10px 10px 5px";
         delBtn.style.fontSize = "16px";
-
-
+            //usuwanie li w listach
+        delBtn.classList.add("trash");
+        delBtn.addEventListener('click', function(){
+            this.parentNode.parentNode.removeChild(this.parentNode);
+            })
     }
 //funkcja dodawania nowych li po kliknieciu w przycisk
     function addNewIngridient(event){
