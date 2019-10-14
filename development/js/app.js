@@ -111,7 +111,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createNewIngridient(ingridient){
         var newIngridient = document.createElement("li");
-        newIngridient.innerText=ingridient;
+        var contentLi = document.createElement('span');
+        contentLi.contentEditable = "false";
+        contentLi.innerText = ingridient;
+        newIngridient.appendChild(contentLi);
         listOfIngridients.appendChild(newIngridient);
 
     //tworzenie przycisków usuwania i dodawania
@@ -126,7 +129,14 @@ document.addEventListener('DOMContentLoaded', function () {
         editBtn.appendChild(edit);
         editBtn.style.padding = "10px";
         editBtn.classList.add("edit");
-
+        editBtn.addEventListener('click', function(){
+            if(this.previousSibling.contentEditable != "true"){
+                this.previousSibling.contentEditable = "true";
+            }else{
+                this.previousSibling.contentEditable = "false"
+            }
+        });
+        
         var del = document.createElement("i");
         del.classList.add('far');
         del.classList.add('fa-trash-alt');
@@ -149,11 +159,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createNewSteps(step){
         var newStep = document.createElement("li");
-        newStep.innerText = step;
+        var contentLi = document.createElement('span');
+        contentLi.contentEditable = "false";
+        contentLi.innerText = step;
+        newStep.appendChild(contentLi);
         listOfStepsRecipe.appendChild(newStep);
 
             //tworzenie przycisków usuwania i dodawania
-
+            
     var edit = document.createElement("i"); 
         edit.classList.add('far');
         edit.classList.add('fa-edit');
@@ -164,6 +177,15 @@ document.addEventListener('DOMContentLoaded', function () {
         editBtn.appendChild(edit);
         editBtn.style.padding = "10px";
         editBtn.classList.add("edit");
+        editBtn.addEventListener('click', function(){
+            if(this.previousSibling.contentEditable != "true"){
+                this.previousSibling.contentEditable = "true";
+            }else{
+                this.previousSibling.contentEditable = "false"
+            }
+        });
+  
+        
 
         var del = document.createElement("i");
         del.classList.add('far');
