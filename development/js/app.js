@@ -26,15 +26,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveNewUser(event){
         event.preventDefault()
-        localStorage.setItem("UserName", newUser.value);
-        content.style.display = "none";
-        screen.style.display = "block";
-        if (localStorage.getItem("UserName") == null){
-            name.innerHTML
+        if(newUser.value == ""){
+            newUserBtn.disabled.toggle = true;
+            alert("Musisz podać imię dziku");
         }else{
-            name.innerHTML = localStorage.getItem("UserName");
-            name.style.textTransform = "capitalize";
+            newUserBtn.disabled.toggle = false;
+            localStorage.setItem("UserName", newUser.value);
+            content.style.display = "none";
+            screen.style.display = "block";
+            if (localStorage.getItem("UserName") == null){
+                name.innerHTML
+            }else{
+                name.innerHTML = localStorage.getItem("UserName");
+                name.style.textTransform = "capitalize";
+            }
         }
+
     }
     if(localStorage.getItem("UserName")!= null){
         content.style.display = "none";
@@ -228,7 +235,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var nameRecipe = document.querySelector("#name-recipe");
     var dirscriptionRecipe = document.querySelector(".discrption-recipe");
     var listOfStepsRecipe = document.querySelector('#instruction-steps')
+    var listOfStepsRecipeValid = Array.from(listOfStepsRecipe.children);
     var listOfIngridients = document.querySelector("#list-of-ingridients");
+    var listOfIngridientsValid = Array.from(listOfIngridients.children);
 
 
 //tworzenie obiektu zawierającego caly przepis
@@ -253,15 +262,19 @@ function saveRecipe(newObj){
         }
         alert("Dziku twój przepis został zapisany");
 }
-
     function saveRecipeLocalStorage(event){
         event.preventDefault();
-        newRecipe.name = nameRecipe.value;
-        newRecipe.discription = dirscriptionRecipe.value;
-        saveRecipe(newRecipe);
-        screen.style.display = "block";
-        addRecipesPage.style.display = "none";
-
+        if (nameRecipe.value == "" && dirscriptionRecipe.value == "" && listOfIngridientsValid.length == [] && listOfStepsRecipe.children.length == []){
+            saveAndCloseBTN.disabled.toggle = true;
+            alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
+        }else{
+            saveAndCloseBTN.disabled.toggle = false;
+            newRecipe.name = nameRecipe.value;
+            newRecipe.discription = dirscriptionRecipe.value;
+            saveRecipe(newRecipe);
+            screen.style.display = "block";
+            addRecipesPage.style.display = "none";
+        };
     }
     saveAndCloseBTN.addEventListener('click', saveRecipeLocalStorage);
 
