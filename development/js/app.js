@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveRecipeLocalStorage(event){
         event.preventDefault();
-        if (nameRecipe.value === "" && dirscriptionRecipe.value === "" && listOfIngridientsValid.length === [] && listOfStepsRecipe.children.length === []){
+        if (nameRecipe.value == "" && dirscriptionRecipe.value == "" && listOfIngridientsValid.length == [] && listOfStepsRecipe.children.length == []){
             saveAndCloseBTN.disabled.toggle = true;
             alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
         }else{
