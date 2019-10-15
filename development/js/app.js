@@ -262,6 +262,7 @@ var formRecipe = document.querySelector("#new-recipes")
             saveRecipe(newRecipe);
             screen.style.display = "block";
             addRecipesPage.style.display = "none";
+            formRecipe.reset();
         };
     }
     saveAndCloseBTN.addEventListener('click', saveRecipeLocalStorage);
