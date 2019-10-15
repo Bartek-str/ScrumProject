@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var addRecipesBtn = document.querySelector('.addRecipe');
     var addRecipeBtn2 = document.querySelector('.addRcpBtn');
     var addRecipesPage = document.querySelector('.add');
+    var addPlan = document.querySelector('.addPlan');
+    var addRecipeSide = document.querySelector('.addRecipeSide');
     var addPlanSide = document.querySelector('.addPlanSide');
-    var recipes = document.querySelector('#recipes');
+    var anotherTime = document.querySelector('.anotherTime');
+    var recipes = document.querySelector('.recipes');
     var plans = document.querySelector('#plans');
     var pulpit = document.querySelector('.pulpit');
     var pulpitI = pulpit.querySelector('i');
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         name.innerHTML = localStorage.getItem("UserName");
             name.style.textTransform = "capitalize";
     }
+
 
     // menu
 
@@ -120,18 +124,43 @@ document.addEventListener('DOMContentLoaded', function () {
         screen.style.display = "none";
         recipes.style.display = 'none';
         addRecipesPage.style.display = "block";
-    }
+    };
 
     //dodawanie kroków
-
-    var addStepBtn = document.querySelector("#step-add-btn");
+    var addStepBtn = document.querySelector("#step-add-btn")
     var step = document.querySelector(".instruction");
     var addIngridientBtn = document.querySelector("#ingridient-add-btn");
     var ingridient = document.querySelector('.ingridients');
 
-    //tworzenie nowego li do list
+    //dodawanie ikon  kosza i edycji
+    function createIcon(color, name, size, padding, className, parentEl){
+        var btn = document.createElement("i");
+        btn.classList.add('far');
+        btn.classList.add(name);
+        btn.style.fontSize = size;
+        btn.style.color = color;
+        var bigBtn = document.createElement("a");
+        bigBtn.href="#";
+        bigBtn.appendChild(btn);
+        parentEl.appendChild(bigBtn);
+        bigBtn.style.padding = padding;
+        bigBtn.classList.add(className);
+    };
+    //funkcja odpowiadajaca za edycje
+    function editLi(event){
+            if(this.previousSibling.contentEditable != "true"){
+                this.previousSibling.contentEditable = "true";
+            }else{
+                this.previousSibling.contentEditable = "false"
+            }
+    };
+    //funckcja odpowadająca za usuwanie
+    function delLi(event){
+        this.parentNode.parentNode.removeChild(this.parentNode);
+    }
 
     function createNewIngridient(ingridient){
+                    //tworzenie nowego li do list 
         var newIngridient = document.createElement("li");
         var contentLi = document.createElement('span');
         contentLi.contentEditable = "false";
@@ -139,44 +168,17 @@ document.addEventListener('DOMContentLoaded', function () {
         newIngridient.appendChild(contentLi);
         listOfIngridients.appendChild(newIngridient);
 
-    //tworzenie przycisków usuwania i dodawania
+    //tworzenie przycisków edytowania;
 
-        var edit = document.createElement("i");
-        edit.classList.add('far');
-        edit.classList.add('fa-edit');
-        edit.style.fontSize = "16px";
-        edit.style.color = "#FFB03B";
-        var editBtn = document.createElement("a");
-        editBtn.href="#";
-        editBtn.appendChild(edit);
-        editBtn.style.padding = "10px";
-        editBtn.classList.add("edit");
-        editBtn.addEventListener('click', function(){
-            if(this.previousSibling.contentEditable != "true"){
-                this.previousSibling.contentEditable = "true";
-            }else{
-                this.previousSibling.contentEditable = "false"
-            }
-        });
-        
-        var del = document.createElement("i");
-        del.classList.add('far');
-        del.classList.add('fa-trash-alt');
-        del.style.fontSize = "16px";
-        del.style.color = "#BD4932";
-        var delBtn = document.createElement("a");
-        delBtn.href = "#";
-        delBtn.appendChild(del);
-        newIngridient.appendChild(editBtn);
-        newIngridient.appendChild(delBtn);
-        delBtn.style.padding = "10px 10px 10px 0";
-        delBtn.style.fontSize = "16px";
-        delBtn.style.color = "$color-trash-icon";
-            //usuwanie li w listach
-        delBtn.classList.add("trash");
-        delBtn.addEventListener('click', function(){
-            this.parentNode.parentNode.removeChild(this.parentNode);
-            })
+        createIcon ('#FFB03B','fa-edit', '16px',"10px","edit", newIngridient);
+        createIcon  ("#BD4932",'fa-trash-alt', '16px',"10px","del",newIngridient);
+        var editBtn = document.querySelector('.edit');
+        var delBtn = document.querySelector('.del');
+
+        editBtn.addEventListener('click', editLi);
+
+        delBtn.addEventListener('click', delLi)
+
     }
 
     function createNewSteps(step){
@@ -187,47 +189,17 @@ document.addEventListener('DOMContentLoaded', function () {
         newStep.appendChild(contentLi);
         listOfStepsRecipe.appendChild(newStep);
 
-            //tworzenie przycisków usuwania i dodawania
-            
-    var edit = document.createElement("i"); 
-        edit.classList.add('far');
-        edit.classList.add('fa-edit');
-        edit.style.fontSize = "16px";
-        edit.style.color = "#FFB03B";
-        var editBtn = document.createElement("a");
-        editBtn.href="#";
-        editBtn.appendChild(edit);
-        editBtn.style.padding = "10px";
-        editBtn.classList.add("edit");
-        editBtn.addEventListener('click', function(){
-            if(this.previousSibling.contentEditable != "true"){
-                this.previousSibling.contentEditable = "true";
-            }else{
-                this.previousSibling.contentEditable = "false"
-            }
-        });
+        createIcon ('#FFB03B','fa-edit', '16px',"10px","edit", newStep);
+        createIcon("#BD4932",'fa-trash-alt', '16px',"10px","del",newStep);
+        var editBtn = document.querySelector('.edit');
+        var delBtn = document.querySelector('.del');
 
-        var del = document.createElement("i");
-        del.classList.add('far');
-        del.classList.add('fa-trash-alt');
-        del.style.fontSize = "16px";
-        del.style.color = "#BD4932";
-        var delBtn = document.createElement("a");
-        delBtn.href = "#";
-        delBtn.appendChild(del);
-        newStep.appendChild(editBtn);
-        newStep.appendChild(delBtn);
-        delBtn.style.padding = "10px 10px 10px 5px";
-        delBtn.style.fontSize = "16px";
-            //usuwanie li w listach
-        delBtn.classList.add("trash");
-        delBtn.addEventListener('click', function(){
-            this.parentNode.parentNode.removeChild(this.parentNode);
-            })
+        editBtn.addEventListener('click', editLi);
+
+        delBtn.addEventListener('click', delLi)
+      
     }
-
-    //funkcja dodawania nowych li po kliknieciu w przycisk
-
+//funkcja dodawania nowych li po kliknieciu w przycisk
     function addNewIngridient(event){
         event.preventDefault();
         newRecipe.ingridients.push(ingridient.value);
@@ -239,43 +211,45 @@ document.addEventListener('DOMContentLoaded', function () {
         newRecipe.steps.push(step.value);
         createNewSteps(step.value);
     }
+  
 
     addIngridientBtn.addEventListener('click',addNewIngridient);
     addStepBtn.addEventListener('click', addNewStep);
 
+
+
     var saveAndCloseBTN = document.querySelector("#new-recipe-btn");
     var nameRecipe = document.querySelector("#name-recipe");
     var dirscriptionRecipe = document.querySelector(".discrption-recipe");
-    var listOfStepsRecipe = document.querySelector('#instruction-steps');
+    var listOfStepsRecipe = document.querySelector('#instruction-steps')
     var listOfStepsRecipeValid = Array.from(listOfStepsRecipe.children);
     var listOfIngridients = document.querySelector("#list-of-ingridients");
     var listOfIngridientsValid = Array.from(listOfIngridients.children);
 
 
-    //tworzenie obiektu zawierającego caly przepis
+//tworzenie obiektu zawierającego caly przepis
 
-    var newRecipe = {
-        name:"",
-        discription:"",
-        steps: [],
-        ingridients:[]
-    };
+var newRecipe = {
+    name:"",
+    discription:"",
+    steps: [],
+    ingridients:[]
+}
+//zapisywanie przepisu
 
-    //zapisywanie przepisu
-
-    function saveRecipe(newObj) {
-        var dataFromLocalStorage = [];
-        if (localStorage.getItem("newRecipe") != null) {
-            dataFromLocalStorage = JSON.parse(localStorage.getItem("newRecipe"));
-            dataFromLocalStorage.push(newObj);
-            localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
-        } else {
-            dataFromLocalStorage.push(newObj);
-            localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
+function saveRecipe(newObj){
+    var dataFromLocalStorage = [];
+    if (localStorage.getItem("newRecipe") != null) {
+        dataFromLocalStorage = JSON.parse(localStorage.getItem("newRecipe"));
+        dataFromLocalStorage.push(newObj);
+        localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
+        }else{
+        dataFromLocalStorage.push(newObj);
+        localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
         }
         alert("Dziku twój przepis został zapisany");
-    }
-
+}
+var formRecipe = document.querySelector("#new-recipes")
     function saveRecipeLocalStorage(event){
         event.preventDefault();
         if (nameRecipe.value == "" && dirscriptionRecipe.value == "" && listOfIngridientsValid.length == [] && listOfStepsRecipe.children.length == []){
@@ -288,8 +262,9 @@ document.addEventListener('DOMContentLoaded', function () {
             saveRecipe(newRecipe);
             screen.style.display = "block";
             addRecipesPage.style.display = "none";
-        }
+        };
     }
     saveAndCloseBTN.addEventListener('click', saveRecipeLocalStorage);
 
-});
+})
+
