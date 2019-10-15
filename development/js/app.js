@@ -113,10 +113,35 @@ document.addEventListener('DOMContentLoaded', function () {
     var addIngridientBtn = document.querySelector("#ingridient-add-btn");
     var ingridient = document.querySelector('.ingridients');
 
-
-    //tworzenie nowego li do list 
+    //dodawanie ikon  kosza i edycji
+    function createIcon(color, name, size, padding, className, parentEl){
+        var btn = document.createElement("i");
+        btn.classList.add('far');
+        btn.classList.add(name);
+        btn.style.fontSize = size;
+        btn.style.color = color;
+        var bigBtn = document.createElement("a");
+        bigBtn.href="#";
+        bigBtn.appendChild(btn);
+        parentEl.appendChild(bigBtn);
+        bigBtn.style.padding = padding;
+        bigBtn.classList.add(className);
+    };
+    //funkcja odpowiadajaca za edycje
+    function editLi(event){
+            if(this.previousSibling.contentEditable != "true"){
+                this.previousSibling.contentEditable = "true";
+            }else{
+                this.previousSibling.contentEditable = "false"
+            }
+    };
+    //funckcja odpowadająca za usuwanie
+    function delLi(event){
+        this.parentNode.parentNode.removeChild(this.parentNode);
+    }
 
     function createNewIngridient(ingridient){
+                    //tworzenie nowego li do list 
         var newIngridient = document.createElement("li");
         var contentLi = document.createElement('span');
         contentLi.contentEditable = "false";
@@ -124,44 +149,17 @@ document.addEventListener('DOMContentLoaded', function () {
         newIngridient.appendChild(contentLi);
         listOfIngridients.appendChild(newIngridient);
 
-    //tworzenie przycisków usuwania i dodawania
+    //tworzenie przycisków edytowania;
 
-        var edit = document.createElement("i");
-        edit.classList.add('far');
-        edit.classList.add('fa-edit');
-        edit.style.fontSize = "16px";
-        edit.style.color = "#FFB03B";
-        var editBtn = document.createElement("a");
-        editBtn.href="#";
-        editBtn.appendChild(edit);
-        editBtn.style.padding = "10px";
-        editBtn.classList.add("edit");
-        editBtn.addEventListener('click', function(){
-            if(this.previousSibling.contentEditable != "true"){
-                this.previousSibling.contentEditable = "true";
-            }else{
-                this.previousSibling.contentEditable = "false"
-            }
-        });
-        
-        var del = document.createElement("i");
-        del.classList.add('far');
-        del.classList.add('fa-trash-alt');
-        del.style.fontSize = "16px";
-        del.style.color = "#BD4932";
-        var delBtn = document.createElement("a");
-        delBtn.href = "#";
-        delBtn.appendChild(del);
-        newIngridient.appendChild(editBtn);
-        newIngridient.appendChild(delBtn);
-        delBtn.style.padding = "10px 10px 10px 0";
-        delBtn.style.fontSize = "16px";
-        delBtn.style.color = "$color-trash-icon";
-            //usuwanie li w listach
-        delBtn.classList.add("trash");
-        delBtn.addEventListener('click', function(){
-            this.parentNode.parentNode.removeChild(this.parentNode);
-            })
+        createIcon ('#FFB03B','fa-edit', '16px',"10px","edit", newIngridient);
+        createIcon  ("#BD4932",'fa-trash-alt', '16px',"10px","del",newIngridient);
+        var editBtn = document.querySelector('.edit');
+        var delBtn = document.querySelector('.del');
+
+        editBtn.addEventListener('click', editLi);
+
+        delBtn.addEventListener('click', delLi)
+
     }
 
     function createNewSteps(step){
@@ -172,45 +170,15 @@ document.addEventListener('DOMContentLoaded', function () {
         newStep.appendChild(contentLi);
         listOfStepsRecipe.appendChild(newStep);
 
-            //tworzenie przycisków usuwania i dodawania
-            
-    var edit = document.createElement("i"); 
-        edit.classList.add('far');
-        edit.classList.add('fa-edit');
-        edit.style.fontSize = "16px";
-        edit.style.color = "#FFB03B";
-        var editBtn = document.createElement("a");
-        editBtn.href="#";
-        editBtn.appendChild(edit);
-        editBtn.style.padding = "10px";
-        editBtn.classList.add("edit");
-        editBtn.addEventListener('click', function(){
-            if(this.previousSibling.contentEditable != "true"){
-                this.previousSibling.contentEditable = "true";
-            }else{
-                this.previousSibling.contentEditable = "false"
-            }
-        });
-  
-        
+        createIcon ('#FFB03B','fa-edit', '16px',"10px","edit", newStep);
+        createIcon("#BD4932",'fa-trash-alt', '16px',"10px","del",newStep);
+        var editBtn = document.querySelector('.edit');
+        var delBtn = document.querySelector('.del');
 
-        var del = document.createElement("i");
-        del.classList.add('far');
-        del.classList.add('fa-trash-alt');
-        del.style.fontSize = "16px";
-        del.style.color = "#BD4932";
-        var delBtn = document.createElement("a");
-        delBtn.href = "#";
-        delBtn.appendChild(del);
-        newStep.appendChild(editBtn);
-        newStep.appendChild(delBtn);
-        delBtn.style.padding = "10px 10px 10px 5px";
-        delBtn.style.fontSize = "16px";
-            //usuwanie li w listach
-        delBtn.classList.add("trash");
-        delBtn.addEventListener('click', function(){
-            this.parentNode.parentNode.removeChild(this.parentNode);
-            })
+        editBtn.addEventListener('click', editLi);
+
+        delBtn.addEventListener('click', delLi)
+      
     }
 //funkcja dodawania nowych li po kliknieciu w przycisk
     function addNewIngridient(event){
@@ -262,6 +230,7 @@ function saveRecipe(newObj){
         }
         alert("Dziku twój przepis został zapisany");
 }
+var formRecipe = document.querySelector("#new-recipes")
     function saveRecipeLocalStorage(event){
         event.preventDefault();
         if (nameRecipe.value == "" && dirscriptionRecipe.value == "" && listOfIngridientsValid.length == [] && listOfStepsRecipe.children.length == []){
