@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     var addRecipesBtn = document.querySelector('.addRecipe');
+    var addRecipeBtn2 = document.querySelector('.addRcpBtn');
     var addRecipesPage = document.querySelector('.add');
     var addPlan = document.querySelector('.addPlan');
     var addRecipeSide = document.querySelector('.addRecipeSide');
@@ -25,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
     newUserBtn.addEventListener('click', saveNewUser);
 
     function saveNewUser(event){
-        event.preventDefault()
-        if(newUser.value == ""){
+        event.preventDefault();
+        if(newUser.value === ""){
             newUserBtn.disabled.toggle = true;
             alert("Musisz podać imię dziku");
         }else{
@@ -41,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 name.style.textTransform = "capitalize";
             }
         }
-
     }
+
     if(localStorage.getItem("UserName")!= null){
         content.style.display = "none";
         screen.style.display = "block";
@@ -56,9 +57,18 @@ document.addEventListener('DOMContentLoaded', function () {
     przepisyI.style.display = 'none';
     planyI.style.display = 'none';
 
-    pulpit.addEventListener('click', function (event) {
-        anotherTime.style.display = 'block';
-        // recipes.style.display = 'none';
+    pulpit.addEventListener('click', pulpitClick);
+
+    przepisy.addEventListener('click', przepisyClick);
+
+    plany.addEventListener('click', planyClick);
+
+    function pulpitClick (event) {
+        content.style.display = 'none';
+        screen.style.display = 'block';
+        addRecipesPage.style.display = 'none';
+        addPlanSide.style.display = 'none';
+        recipes.style.display = 'none';
         plans.style.display = 'none';
         if (!pulpit.classList.contains('highlight')) {
             pulpit.classList.add('highlight');
@@ -68,11 +78,14 @@ document.addEventListener('DOMContentLoaded', function () {
             plany.classList.remove('highlight');
             planyI.style.display = 'none';
         }
-    });
+    }
 
-    przepisy.addEventListener('click', function (event) {
-        // recipes.style.display = 'block';
-        anotherTime.style.display = 'none';
+    function przepisyClick (event) {
+        recipes.style.display = 'block';
+        screen.style.display = 'none';
+        content.style.display = 'none';
+        addRecipesPage.style.display = 'none';
+        addPlanSide.style.display = 'none';
         plans.style.display = 'none';
         if (!przepisy.classList.contains('highlight')) {
             przepisy.classList.add('highlight');
@@ -82,11 +95,15 @@ document.addEventListener('DOMContentLoaded', function () {
             plany.classList.remove('highlight');
             planyI.style.display = 'none';
         }
-    });
+    }
 
-    plany.addEventListener('click', function (event) {
+    function planyClick (event) {
         plans.style.display = 'block';
-        anotherTime.style.display = 'none';
+        recipes.style.display = 'none';
+        screen.style.display = 'none';
+        content.style.display = 'none';
+        addRecipesPage.style.display = 'none';
+        addPlanSide.style.display = 'none';
         if (!plany.classList.contains('highlight')) {
             plany.classList.add('highlight');
             planyI.style.display = 'block';
@@ -95,15 +112,17 @@ document.addEventListener('DOMContentLoaded', function () {
             przepisy.classList.remove('highlight');
             przepisyI.style.display = 'none';
         }
-    });
+    }
 
     //add recipes
 
-    
+    addRecipeBtn2.addEventListener('click', addRecipes);
     addRecipesBtn.addEventListener('click', addRecipes);
 
     function addRecipes(event){
+        content.style.display = 'none';
         screen.style.display = "none";
+        recipes.style.display = 'none';
         addRecipesPage.style.display = "block";
     };
 
