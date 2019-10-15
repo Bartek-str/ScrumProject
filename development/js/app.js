@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     var addRecipesBtn = document.querySelector('.addRecipe');
+    var addRecipeBtn2 = document.querySelector('.addRcpBtn');
     var addRecipesPage = document.querySelector('.add');
-    var addPlan = document.querySelector('.addPlan');
-    var addRecipeSide = document.querySelector('.addRecipeSide');
     var addPlanSide = document.querySelector('.addPlanSide');
-    var anotherTime = document.querySelector('.anotherTime');
-    var recipes = document.querySelector('.recipes');
+    var recipes = document.querySelector('#recipes');
     var plans = document.querySelector('#plans');
     var pulpit = document.querySelector('.pulpit');
     var pulpitI = pulpit.querySelector('i');
@@ -25,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
     newUserBtn.addEventListener('click', saveNewUser);
 
     function saveNewUser(event){
-        event.preventDefault()
-        if(newUser.value == ""){
+        event.preventDefault();
+        if(newUser.value === ""){
             newUserBtn.disabled.toggle = true;
             alert("Musisz podać imię dziku");
         }else{
@@ -41,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 name.style.textTransform = "capitalize";
             }
         }
-
     }
+
     if(localStorage.getItem("UserName")!= null){
         content.style.display = "none";
         screen.style.display = "block";
@@ -50,15 +48,23 @@ document.addEventListener('DOMContentLoaded', function () {
             name.style.textTransform = "capitalize";
     }
 
-
     // menu
 
     przepisyI.style.display = 'none';
     planyI.style.display = 'none';
 
-    pulpit.addEventListener('click', function (event) {
-        anotherTime.style.display = 'block';
-        // recipes.style.display = 'none';
+    pulpit.addEventListener('click', pulpitClick);
+
+    przepisy.addEventListener('click', przepisyClick);
+
+    plany.addEventListener('click', planyClick);
+
+    function pulpitClick (event) {
+        content.style.display = 'none';
+        screen.style.display = 'block';
+        addRecipesPage.style.display = 'none';
+        addPlanSide.style.display = 'none';
+        recipes.style.display = 'none';
         plans.style.display = 'none';
         if (!pulpit.classList.contains('highlight')) {
             pulpit.classList.add('highlight');
@@ -68,11 +74,14 @@ document.addEventListener('DOMContentLoaded', function () {
             plany.classList.remove('highlight');
             planyI.style.display = 'none';
         }
-    });
+    }
 
-    przepisy.addEventListener('click', function (event) {
-        // recipes.style.display = 'block';
-        anotherTime.style.display = 'none';
+    function przepisyClick (event) {
+        recipes.style.display = 'block';
+        screen.style.display = 'none';
+        content.style.display = 'none';
+        addRecipesPage.style.display = 'none';
+        addPlanSide.style.display = 'none';
         plans.style.display = 'none';
         if (!przepisy.classList.contains('highlight')) {
             przepisy.classList.add('highlight');
@@ -82,11 +91,15 @@ document.addEventListener('DOMContentLoaded', function () {
             plany.classList.remove('highlight');
             planyI.style.display = 'none';
         }
-    });
+    }
 
-    plany.addEventListener('click', function (event) {
+    function planyClick (event) {
         plans.style.display = 'block';
-        anotherTime.style.display = 'none';
+        recipes.style.display = 'none';
+        screen.style.display = 'none';
+        content.style.display = 'none';
+        addRecipesPage.style.display = 'none';
+        addPlanSide.style.display = 'none';
         if (!plany.classList.contains('highlight')) {
             plany.classList.add('highlight');
             planyI.style.display = 'block';
@@ -95,26 +108,28 @@ document.addEventListener('DOMContentLoaded', function () {
             przepisy.classList.remove('highlight');
             przepisyI.style.display = 'none';
         }
-    });
+    }
 
     //add recipes
 
-    
+    addRecipeBtn2.addEventListener('click', addRecipes);
     addRecipesBtn.addEventListener('click', addRecipes);
 
     function addRecipes(event){
+        content.style.display = 'none';
         screen.style.display = "none";
+        recipes.style.display = 'none';
         addRecipesPage.style.display = "block";
-    };
+    }
 
     //dodawanie kroków
-    var addStepBtn = document.querySelector("#step-add-btn")
+
+    var addStepBtn = document.querySelector("#step-add-btn");
     var step = document.querySelector(".instruction");
     var addIngridientBtn = document.querySelector("#ingridient-add-btn");
     var ingridient = document.querySelector('.ingridients');
 
-
-    //tworzenie nowego li do list 
+    //tworzenie nowego li do list
 
     function createNewIngridient(ingridient){
         var newIngridient = document.createElement("li");
@@ -191,8 +206,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.previousSibling.contentEditable = "false"
             }
         });
-  
-        
 
         var del = document.createElement("i");
         del.classList.add('far');
@@ -212,7 +225,9 @@ document.addEventListener('DOMContentLoaded', function () {
             this.parentNode.parentNode.removeChild(this.parentNode);
             })
     }
-//funkcja dodawania nowych li po kliknieciu w przycisk
+
+    //funkcja dodawania nowych li po kliknieciu w przycisk
+
     function addNewIngridient(event){
         event.preventDefault();
         newRecipe.ingridients.push(ingridient.value);
@@ -224,47 +239,46 @@ document.addEventListener('DOMContentLoaded', function () {
         newRecipe.steps.push(step.value);
         createNewSteps(step.value);
     }
-  
 
     addIngridientBtn.addEventListener('click',addNewIngridient);
     addStepBtn.addEventListener('click', addNewStep);
 
-
-
     var saveAndCloseBTN = document.querySelector("#new-recipe-btn");
     var nameRecipe = document.querySelector("#name-recipe");
     var dirscriptionRecipe = document.querySelector(".discrption-recipe");
-    var listOfStepsRecipe = document.querySelector('#instruction-steps')
+    var listOfStepsRecipe = document.querySelector('#instruction-steps');
     var listOfStepsRecipeValid = Array.from(listOfStepsRecipe.children);
     var listOfIngridients = document.querySelector("#list-of-ingridients");
     var listOfIngridientsValid = Array.from(listOfIngridients.children);
 
 
-//tworzenie obiektu zawierającego caly przepis
+    //tworzenie obiektu zawierającego caly przepis
 
-var newRecipe = {
-    name:"",
-    discription:"",
-    steps: [],
-    ingridients:[]
-}
-//zapisywanie przepisu
+    var newRecipe = {
+        name:"",
+        discription:"",
+        steps: [],
+        ingridients:[]
+    };
 
-function saveRecipe(newObj){
-    var dataFromLocalStorage = [];
-    if (localStorage.getItem("newRecipe") != null) {
-        dataFromLocalStorage = JSON.parse(localStorage.getItem("newRecipe"));
-        dataFromLocalStorage.push(newObj);
-        localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
-        }else{
-        dataFromLocalStorage.push(newObj);
-        localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
+    //zapisywanie przepisu
+
+    function saveRecipe(newObj) {
+        var dataFromLocalStorage = [];
+        if (localStorage.getItem("newRecipe") != null) {
+            dataFromLocalStorage = JSON.parse(localStorage.getItem("newRecipe"));
+            dataFromLocalStorage.push(newObj);
+            localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
+        } else {
+            dataFromLocalStorage.push(newObj);
+            localStorage.setItem("newRecipe", JSON.stringify(dataFromLocalStorage));
         }
         alert("Dziku twój przepis został zapisany");
-}
+    }
+
     function saveRecipeLocalStorage(event){
         event.preventDefault();
-        if (nameRecipe.value == "" && dirscriptionRecipe.value == "" && listOfIngridientsValid.length == [] && listOfStepsRecipe.children.length == []){
+        if (nameRecipe.value === "" && dirscriptionRecipe.value === "" && listOfIngridientsValid.length === [] && listOfStepsRecipe.children.length === []){
             saveAndCloseBTN.disabled.toggle = true;
             alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
         }else{
@@ -274,9 +288,8 @@ function saveRecipe(newObj){
             saveRecipe(newRecipe);
             screen.style.display = "block";
             addRecipesPage.style.display = "none";
-        };
+        }
     }
     saveAndCloseBTN.addEventListener('click', saveRecipeLocalStorage);
 
-})
-
+});
