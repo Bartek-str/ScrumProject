@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var content = document.querySelector('.content');
     var screen = document.querySelector('.screen');
     var name = document.querySelector(".name");
+    var numRecipes = document.querySelector('#numRecipes');
 
     // pobranie i zmiana imienia
 
@@ -297,15 +298,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var recipesContent = document.querySelector('.recipesContent');
 
     function renderAllRecipes() {
-        recipesContent.innerHTML = '';
         var allRecipes = JSON.parse(localStorage.getItem('newRecipe'));
-
+        recipesContent.innerHTML = '';
         allRecipes.forEach(function (recipe) {
             var newRecipei = document.createElement('div');
             recipesContent.appendChild(newRecipei);
             newRecipei.classList.add('przepis');
             var newId = document.createElement('div');
-            newId.innerText = '';
+            newId.innerText = allRecipes.indexOf(recipe) + 1;
             newRecipei.appendChild(newId);
             newId.classList.add('recipeId');
             var newName = document.createElement('div');
@@ -321,8 +321,15 @@ document.addEventListener('DOMContentLoaded', function () {
             newAction.classList.add('recipeAction');
             newAction.innerHTML = '<i class="far fa-edit"></i><i class="far fa-trash-alt"></i>';
         });
+        numRecipes.innerText = allRecipes.length;
     }
 
     przepisy.addEventListener('click', renderAllRecipes);
     saveAndCloseBTN.addEventListener('click', renderAllRecipes);
+
+    // pokazywanie ile masz przepisów
+
+
+    var allRecipe= JSON.parse(localStorage.getItem('newRecipe'));
+    numRecipes.innerText = allRecipe.length;
 });
