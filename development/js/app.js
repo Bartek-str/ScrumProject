@@ -313,4 +313,34 @@ var formRecipe = document.querySelector("#new-recipes")
     var allRecipe= JSON.parse(localStorage.getItem('newRecipe'));
     numRecipes.innerText = allRecipe.length;
     
+    //dodawnie planu
+
+    var addPlanBtn = document.querySelector('.addPlan');
+    var addNewPlanPage = document.querySelector('.addNewPlan');
+
+    addPlanBtn.addEventListener('click', addPlan);
+
+    function addPlan(event){
+        content.style.display = 'none';
+        screen.style.display = "none";
+        recipes.style.display = 'none';
+        addNewPlanPage.style.display = 'block';
+    };
+
+    function closePlanPage(event){
+        // event.preventDefault();
+        // if (nameRecipe.value === "" || dirscriptionRecipe.value === "" || listOfStepsRecipeValid.length === [] || listOfIngridientsValid.length=== []){
+        //     saveAndCloseBTN.disabled.toggle = true;
+        //     alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
+        // }else{
+        //     saveAndCloseBTN.disabled.toggle = false;
+        //     newRecipe.name = nameRecipe.value;
+        //     newRecipe.discription = dirscriptionRecipe.value;
+            // saveRecipe(newRecipe);
+            screen.style.display = "block";
+            addNewPlanPage.style.display = "none";
+            // formRecipe.reset();            
+        };
+    saveAndCloseBTN.addEventListener('click', closePlanPage2);
+    
 });
