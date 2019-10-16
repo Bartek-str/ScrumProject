@@ -302,4 +302,5 @@ var formRecipe = document.querySelector("#new-recipes")
     
     var allRecipe= JSON.parse(localStorage.getItem('newRecipe'));
     numRecipes.innerText = allRecipe.length;
+    
 });
