@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
             newRecipei.appendChild(newName);
             newName.classList.add('recipeName');
             var newDescription = document.createElement('div');
-            newDescription.innerText = recipe.description;
+            newDescription.innerText = recipe.discription;
             newRecipei.appendChild(newDescription);
             newDescription.classList.add('recipeDescription');
             var newAction = document.createElement('div');
@@ -328,8 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
     saveAndCloseBTN.addEventListener('click', renderAllRecipes);
 
     // pokazywanie ile masz przepisów
-
-
+    
     var allRecipe= JSON.parse(localStorage.getItem('newRecipe'));
     numRecipes.innerText = allRecipe.length;
 });
