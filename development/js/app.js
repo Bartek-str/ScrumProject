@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var ingridient = document.querySelector('.ingridients');
 
     //dodawanie ikon  kosza i edycji
-    function createIcon(color, name, size, padding, className, parentEl){
+    function createIcon(color, name, size, padding, className, parentEl, nameOfEvent){
         var btn = document.createElement("i");
         btn.classList.add('far');
         btn.classList.add(name);
@@ -164,13 +164,18 @@ document.addEventListener('DOMContentLoaded', function () {
         newStep.appendChild(contentLi);
         listOfStepsRecipe.appendChild(newStep);
 
-        createIcon ('#FFB03B','fa-edit', '16px',"10px","edit", newStep);
+        createIcon ('#FFB03B','fa-edit', '16px',"10px","edit", newStep, editLi);
         createIcon('#BD4932','fa-trash-alt', '16px',"10px","del",newStep);
-        var editBtn1 = document.querySelector('.edit');
-        var delBtn1 = document.querySelector('.del');
+        var editBtn1 = document.querySelectorAll('.edit');
+        var delBtn1 = document.querySelectorAll('.del');
 
-        editBtn1.addEventListener('click', editLi);
-        delBtn1.addEventListener('click', delLi);
+        editBtn1.forEach(function(i){
+            i.addEventListener('click', editLi);
+        })
+        delBtn1.forEach(function(i){
+            i.addEventListener('click', delLi);
+        });
+
       
     };
 
@@ -187,11 +192,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         createIcon ("#FFB03B",'fa-edit', '16px',"10px","editIngrid", newIngridient);
         createIcon  ("#BD4932",'fa-trash-alt', '16px',"10px","delIngrid",newIngridient);
-        var editBtn = document.querySelector('.editIngrid');
-        var delBtn = document.querySelector('.delIngrid');
+        var editBtn = document.querySelectorAll('.editIngrid');
+        var delBtn = document.querySelectorAll('.delIngrid');
 
-        editBtn.addEventListener('click', editLi);
-        delBtn.addEventListener('click', delLi);
+        editBtn.forEach(function(x){
+            x.addEventListener('click', editLi);
+        })
+        delBtn.forEach(function(x){
+            x.addEventListener('click', delLi);
+        });
 
     };
 
@@ -222,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var listOfStepsRecipeValid = Array.from(listOfStepsRecipe.children);
     var listOfIngridients = document.querySelector("#list-of-ingridients");
     var listOfIngridientsValid = Array.from(listOfIngridients.children);
+    var elListOfStepsRecipe = document.querySelectorAll('#instruction-steps li');
 
 
 //tworzenie obiektu zawierającego caly przepis
@@ -259,7 +269,7 @@ var formRecipe = document.querySelector("#new-recipes")
             saveRecipe(newRecipe);
             screen.style.display = "block";
             addRecipesPage.style.display = "none";
-            formRecipe.reset();
+            formRecipe.reset();            
         };
     }
     saveAndCloseBTN.addEventListener('click', saveRecipeLocalStorage);
