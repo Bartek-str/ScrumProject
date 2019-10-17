@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var saveAndCloseBTN = document.querySelector("#new-recipe-btn");
     var nameRecipe = document.querySelector("#name-recipe");
     var dirscriptionRecipe = document.querySelector(".discrption-recipe");
-    var listOfStepsRecipe = document.querySelector('#instruction-steps')
+    var listOfStepsRecipe = document.querySelector('#instruction-steps');
     var listOfStepsRecipeValid = Array.from(listOfStepsRecipe.children);
     var listOfIngridients = document.querySelector("#list-of-ingridients");
     var listOfIngridientsValid = Array.from(listOfIngridients.children);
@@ -256,7 +256,7 @@ function saveRecipe(newObj){
         }
         alert("Dziku twój przepis został zapisany");
 }
-var formRecipe = document.querySelector("#new-recipes")
+var formRecipe = document.querySelector("#new-recipes");
     function saveRecipeLocalStorage(event){
         event.preventDefault();
         if (nameRecipe.value === "" || dirscriptionRecipe.value === "" || listOfStepsRecipeValid.length === [] || listOfIngridientsValid.length=== []){
@@ -317,6 +317,7 @@ var formRecipe = document.querySelector("#new-recipes")
 
     var addPlanBtn = document.querySelector('.addPlan');
     var addNewPlanPage = document.querySelector('.addNewPlan');
+    var saveAndCloseBTNP = document.querySelector('#new-plan-btn');
 
     addPlanBtn.addEventListener('click', addPlan);
 
@@ -325,22 +326,123 @@ var formRecipe = document.querySelector("#new-recipes")
         screen.style.display = "none";
         recipes.style.display = 'none';
         addNewPlanPage.style.display = 'block';
-    };
+    }
 
-    function closePlanPage(event){
-        // event.preventDefault();
-        // if (nameRecipe.value === "" || dirscriptionRecipe.value === "" || listOfStepsRecipeValid.length === [] || listOfIngridientsValid.length=== []){
-        //     saveAndCloseBTN.disabled.toggle = true;
-        //     alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
-        // }else{
-        //     saveAndCloseBTN.disabled.toggle = false;
-        //     newRecipe.name = nameRecipe.value;
-        //     newRecipe.discription = dirscriptionRecipe.value;
-            // saveRecipe(newRecipe);
-            screen.style.display = "block";
-            addNewPlanPage.style.display = "none";
-            // formRecipe.reset();            
-        };
-    saveAndCloseBTN.addEventListener('click', closePlanPage2);
+    // function closePlanPage(event) {
+    //     event.preventDefault();
+    //     if (nameRecipe.value === "" || dirscriptionRecipe.value === "" || listOfStepsRecipeValid.length === [] || listOfIngridientsValid.length === []) {
+    //         saveAndCloseBTNP.disabled.toggle = true;
+    //         alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
+    //     } else {
+    //
+    //     }
+    // }
+    // saveAndCloseBTNP.addEventListener('click', closePlanPage);
+
+    // var newPlan = {
+    //     name: '',
+    //     description: '',
+    //     weekNumber: '',
+    //     pn: {
+    //         a: '',
+    //         b: '',
+    //         c: '',
+    //         d: '',
+    //         e: ''
+    //     },
+    //     wt: {
+    //         a: '',
+    //         b: '',
+    //         c: '',
+    //         d: '',
+    //         e: ''
+    //     },
+    //     sr: {
+    //         a: '',
+    //         b: '',
+    //         c: '',
+    //         d: '',
+    //         e: ''
+    //     },
+    //     cz: {
+    //         a: '',
+    //         b: '',
+    //         c: '',
+    //         d: '',
+    //         e: ''
+    //     },
+    //     pt: {
+    //         a: '',
+    //         b: '',
+    //         c: '',
+    //         d: '',
+    //         e: ''
+    //     },
+    //     sb: {
+    //         a: '',
+    //         b: '',
+    //         c: '',
+    //         d: '',
+    //         e: ''
+    //     },
+    //     nd: {
+    //         a: '',
+    //         b: '',
+    //         c: '',
+    //         d: '',
+    //         e: ''
+    //     },
+    // };
+    //
+    // var namePlan = document.querySelector('#name-plan');
+    // var descriptionPlan = document.querySelector('#discrption-plan');
+    // var weekNum = document.querySelector('#num-of-week');
+    //
+    // function savePlanObj(newObj){
+    //     var dataFromLocalStorage = [];
+    //     if (localStorage.getItem("newPlan") != null) {
+    //         dataFromLocalStorage = JSON.parse(localStorage.getItem("newPlan"));
+    //         dataFromLocalStorage.push(newObj);
+    //         localStorage.setItem("newPlan", JSON.stringify(dataFromLocalStorage));
+    //     }else{
+    //         dataFromLocalStorage.push(newObj);
+    //         localStorage.setItem("newPlan", JSON.stringify(dataFromLocalStorage));
+    //     }
+    //     alert("Dziku twój plan został zapisany");
+    // }
+    //
+    // function savePlan(event) {
+    //     event.preventDefault();
+    //     if (namePlan.value === "" || descriptionPlan.value === "" || weekNum === '') {
+    //         saveAndCloseBTNP.disabled.toggle = true;
+    //         alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
+    //     }
+    //     else {
+    //         saveAndCloseBTNP.disabled.toggle = false;
+    //         newPlan.name = namePlan.value;
+    //         newPlan.description = descriptionPlan.value;
+    //         newPlan.pn.a = document.querySelectorAll('.monday .selectOption').;
+    //         savePlanObj(newPlan);
+    //         screen.style.display = "block";
+    //         addNewPlanPage.style.display = "none";
+    //         formRecipe.reset();
+    //     }
+    // }
+
+    // wybór opcji w planie
+
+    var selectOptions = document.querySelectorAll('.selectOption');
+    var selects = [];
+    selectOptions.forEach(function (select) {
+        selects.push(select);
+    });
+
+    selects.forEach(function (select) {
+        allRecipe.forEach(function (recipe) {
+            var option = document.createElement('option');
+            select.appendChild(option);
+            option.innerText = recipe.name;
+        })
+    })
     
 });
