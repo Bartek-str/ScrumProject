@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         addPlanSide.style.display = 'none';
         recipes.style.display = 'none';
         plans.style.display = 'none';
+        addPlan.style ='none';
         if (!pulpit.classList.contains('highlight')) {
             pulpit.classList.add('highlight');
             pulpitI.style.display = 'block';
@@ -84,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         addRecipesPage.style.display = 'none';
         addPlanSide.style.display = 'none';
         plans.style.display = 'none';
+        addPlan.style ='none';
         if (!przepisy.classList.contains('highlight')) {
             przepisy.classList.add('highlight');
             przepisyI.style.display = 'block';
@@ -101,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
         content.style.display = 'none';
         addRecipesPage.style.display = 'none';
         addPlanSide.style.display = 'none';
+        addPlan.style ='none';
         if (!plany.classList.contains('highlight')) {
             plany.classList.add('highlight');
             planyI.style.display = 'block';
