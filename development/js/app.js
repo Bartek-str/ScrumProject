@@ -447,5 +447,113 @@ var formRecipe = document.querySelector("#new-recipes");
             option.innerText = recipe.name;
         })
     })
+
+
+    var monday = document.querySelectorAll('.monday .meal select option');
+    console.log(monday);
+    var tuesday = document.querySelectorAll('.tuesday .meal select option');
+    console.log(tuesday);
+    var wednesday = document.querySelectorAll('.wednesday .meal select option');
+    console.log (wednesday);
+    var thursday = document.querySelectorAll('.thursday .meal select option');
+    console.log (thursday);
+    var friday = document.querySelectorAll('.friday .meal select option');
+    console.log (friday);
+    var sunday = document.querySelectorAll('.saturday .meal select option');
+    console.log (sunday);
+    var saturday = document.querySelectorAll('.sunday .meal select option');
+    console.log (saturday)
+    var namePlan = document.querySelector('#name-plan');
+    var descriptionPlan = document.querySelector('.discrption-plan');
+    var weekNum = document.querySelector('#num-of-week');
+
+
+    var newPlan={
+        name: '',
+        discription:'',
+        weekNumber: '',
+        monday:[],
+        tuesday: [],
+        wednesday: [],
+        thursday:[],
+        friday:[],
+        saturday:[],
+        sunday:[]
+    };
+
+    console.log(newPlan);
+
+    var saveAndClosePlanBTN = document.querySelector('#new-plan-btn');
+    var formPlan = document.querySelector('#new-plans');
+    
+    function saveRecipeLocalStorage(event){
+        event.preventDefault();
+        if (namePlan.value === "" || descriptionPlan.value === ""){
+            saveAndClosePlanBTN.disabled.toggle = true;
+            alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
+        }else{
+            saveAndClosePlanBTN.disabled.toggle = false;
+            newPlan.name = namePlan.value;
+            newPlan.discription = descriptionPlan.value;
+            newPlan.weekNumber = weekNum.value;
+            monday.forEach(function(i){
+                if (i.selected){
+                    newPlan.monday.push(i.value);
+                }
+            });
+            tuesday.forEach(function(i){
+                if (i.selected){
+                newPlan.tuesday.push(i.value);
+                }
+            });
+            wednesday.forEach(function(i){
+                if (i.selected){
+                newPlan.wednesday.push(i.value);
+                }
+            });
+            thursday.forEach(function(i){
+                if (i.selected){
+                newPlan.thursday.push(i.value);
+                }
+            });
+            friday.forEach(function(i){
+                if (i.selected){
+                newPlan.friday.push(i.value);
+                }
+            });
+            saturday.forEach(function(i){
+                if (i.selected){
+                newPlan.saturday.push(i.value);
+                }
+            });
+            sunday.forEach(function(i){
+                if (i.selected){
+                newPlan.sunday.push(i.value);
+                }
+            });
+            savePlanObj(newPlan);
+            screen.style.display = "block";
+            addNewPlanPage.style.display = "none";
+
+            formPlan.reset();            
+        };
+    }
+
+    function savePlanObj(newObj){
+        var dataFromLocalStorage = [];
+        if (localStorage.getItem("newPlan") != null) {
+            dataFromLocalStorage = JSON.parse(localStorage.getItem("newPlan"));
+            dataFromLocalStorage.push(newObj);
+            localStorage.setItem("newPlan", JSON.stringify(dataFromLocalStorage));
+        }else{
+            dataFromLocalStorage.push(newObj);
+            localStorage.setItem("newPlan", JSON.stringify(dataFromLocalStorage));
+        }
+        alert("Dziku twój plan został zapisany");
+        }
+
+  
+        saveAndClosePlanBTN.addEventListener('click', saveRecipeLocalStorage);
+    
     
 });
