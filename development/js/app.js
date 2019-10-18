@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var addRecipesBtn = document.querySelector('.addRecipe');
     var addRecipeBtn2 = document.querySelector('.addRcpBtn');
     var addRecipesPage = document.querySelector('.add');
-    var addPlanSide = document.querySelector('.addPlanSide');
     var recipes = document.querySelector('#recipes');
     var plans = document.querySelector('#plans');
     var pulpit = document.querySelector('.pulpit');
@@ -18,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var screen = document.querySelector('.screen');
     var name = document.querySelector(".name");
     var numRecipes = document.querySelector('#numRecipes');
+
 
     // pobranie i zmiana imienia
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         content.style.display = 'none';
         screen.style.display = 'block';
         addRecipesPage.style.display = 'none';
-        addPlanSide.style.display = 'none';
+        addNewPlanPage.style.display = 'none';
         recipes.style.display = 'none';
         plans.style.display = 'none';
         addPlan.style ='none';
@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
         recipes.style.display = 'block';
         screen.style.display = 'none';
         content.style.display = 'none';
+        addNewPlanPage.style.display = 'none';
         addRecipesPage.style.display = 'none';
-        addPlanSide.style.display = 'none';
         plans.style.display = 'none';
         addPlan.style ='none';
         if (!przepisy.classList.contains('highlight')) {
@@ -100,9 +100,9 @@ document.addEventListener('DOMContentLoaded', function () {
         plans.style.display = 'block';
         recipes.style.display = 'none';
         screen.style.display = 'none';
+        addNewPlanPage.style.display = 'none';
         content.style.display = 'none';
         addRecipesPage.style.display = 'none';
-        addPlanSide.style.display = 'none';
         addPlan.style ='none';
         if (!plany.classList.contains('highlight')) {
             plany.classList.add('highlight');
@@ -146,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
         bigBtn.style.padding = padding;
         bigBtn.classList.add(className);
     };
+
     //funkcja odpowiadajaca za edycje
     function editLi(event){
             if(this.previousSibling.contentEditable != "true"){
@@ -208,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
 
-//funkcja dodawania nowych li po kliknieciu w przycisk
+    //funkcja dodawania nowych li po kliknieciu w przycisk
     function addNewIngridient(event){
         event.preventDefault();
         newRecipe.ingridients.push(ingridient.value);
@@ -237,17 +238,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var elListOfStepsRecipe = document.querySelectorAll('#instruction-steps li');
 
 
-//tworzenie obiektu zawierającego caly przepis
+    //tworzenie obiektu zawierającego caly przepis
 
-var newRecipe = {
-    name:"",
-    discription:"",
-    steps: [],
-    ingridients:[]
-}
-//zapisywanie przepisu
+    var newRecipe = {
+        name:"",
+        discription:"",
+        steps: [],
+        ingridients:[]
+    }
 
-function saveRecipe(newObj){
+    //zapisywanie przepisu
+
+    function saveRecipe(newObj){
     var dataFromLocalStorage = [];
     if (localStorage.getItem("newRecipe") != null) {
         dataFromLocalStorage = JSON.parse(localStorage.getItem("newRecipe"));
@@ -314,20 +316,22 @@ var formRecipe = document.querySelector("#new-recipes");
     // pokazywanie ile masz przepisów
     
     var allRecipe= JSON.parse(localStorage.getItem('newRecipe'));
-    // numRecipes.innerText = allRecipe.length;
+    numRecipes.innerText = allRecipe.length;
     
     //dodawnie planu
 
     var addPlanBtn = document.querySelector('.addPlan');
     var addNewPlanPage = document.querySelector('.addNewPlan');
-
+    var newAddPl = document.querySelector('.addPlnBtn');
 
     addPlanBtn.addEventListener('click', addPlan);
+    newAddPl.addEventListener('click', addPlan);
 
     function addPlan(event){
         content.style.display = 'none';
         screen.style.display = "none";
         recipes.style.display = 'none';
+        plans.style.display = 'none';
         addNewPlanPage.style.display = 'block';
     }
 
@@ -346,23 +350,15 @@ var formRecipe = document.querySelector("#new-recipes");
             select.appendChild(option);
             option.innerText = recipe.name;
         })
-    })
-
+    });
 
     var monday = document.querySelectorAll('.monday .meal select option');
-    console.log(monday);
     var tuesday = document.querySelectorAll('.tuesday .meal select option');
-    console.log(tuesday);
     var wednesday = document.querySelectorAll('.wednesday .meal select option');
-    console.log (wednesday);
     var thursday = document.querySelectorAll('.thursday .meal select option');
-    console.log (thursday);
     var friday = document.querySelectorAll('.friday .meal select option');
-    console.log (friday);
     var sunday = document.querySelectorAll('.saturday .meal select option');
-    console.log (sunday);
     var saturday = document.querySelectorAll('.sunday .meal select option');
-    console.log (saturday)
     var namePlan = document.querySelector('#name-plan');
     var descriptionPlan = document.querySelector('.discrption-plan');
     var weekNum = document.querySelector('#num-of-week');
@@ -393,7 +389,8 @@ var formRecipe = document.querySelector("#new-recipes");
         if (namePlan.value === "" || descriptionPlan.value === ""|| weekNum == ""){
             saveAndClosePlanBTN.disabled.toggle = true;
             alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
-        }else{
+        }
+        else {
             saveAndClosePlanBTN.disabled.toggle = false;
             newPlan.name = namePlan.value;
             newPlan.discription = descriptionPlan.value;
@@ -437,7 +434,7 @@ var formRecipe = document.querySelector("#new-recipes");
             addNewPlanPage.style.display = "none";
             savePlanObj(newPlan);
             formPlan.reset();            
-        };
+        }
     }
 
     function savePlanObj(newObj){
@@ -453,8 +450,45 @@ var formRecipe = document.querySelector("#new-recipes");
         alert("Dziku twój plan został zapisany");
         }
 
-  
         saveAndClosePlanBTN.addEventListener('click', savePlanLocalStorage);
-    
-    
+
+    // wyświetlanie planu
+
+    var plansContent = document.querySelector('.plansContent');
+    console.log(plansContent);
+
+    function renderAllPlan() {
+        var allPlans = JSON.parse(localStorage.getItem('newPlan'));
+        plansContent.innerHTML = '';
+        console.log(allPlans);
+        allPlans.forEach(function (plan) {
+            var newPlani = document.createElement('div');
+            plansContent.appendChild(newPlani);
+            newPlani.classList.add('plan');
+            var newPlanId = document.createElement('div');
+            newPlanId.innerText = allPlans.indexOf(plan) + 1;
+            newPlani.appendChild(newPlanId);
+            newPlanId.classList.add('planId');
+            var newName = document.createElement('div');
+            newName.innerText = plan.name;
+            newPlani.appendChild(newName);
+            newName.classList.add('planName');
+            var discriptionPlan = document.createElement('div');
+            discriptionPlan.innerText = plan.discription;
+            newPlani.appendChild(discriptionPlan);
+            discriptionPlan.classList.add('planDescription');
+            var weeknumPlan = document.createElement('div');
+            weeknumPlan.innerText = plan.weekNumber;
+            newPlani.appendChild(weeknumPlan);
+            weeknumPlan.classList.add('planWeek');
+            var newAction = document.createElement('div');
+            newPlani.appendChild(newAction);
+            newAction.classList.add('recipeAction');
+            newAction.innerHTML = '<i class="far fa-edit"></i><i class="far fa-trash-alt"></i>';
+        });
+    }
+
+    plany.addEventListener('click', renderAllPlan);
+    saveAndClosePlanBTN.addEventListener('click', renderAllPlan);
+
 });
