@@ -314,13 +314,13 @@ var formRecipe = document.querySelector("#new-recipes");
     // pokazywanie ile masz przepisów
     
     var allRecipe= JSON.parse(localStorage.getItem('newRecipe'));
-    numRecipes.innerText = allRecipe.length;
+    // numRecipes.innerText = allRecipe.length;
     
     //dodawnie planu
 
     var addPlanBtn = document.querySelector('.addPlan');
     var addNewPlanPage = document.querySelector('.addNewPlan');
-    var saveAndCloseBTNP = document.querySelector('#new-plan-btn');
+
 
     addPlanBtn.addEventListener('click', addPlan);
 
@@ -331,106 +331,6 @@ var formRecipe = document.querySelector("#new-recipes");
         addNewPlanPage.style.display = 'block';
     }
 
-    // function closePlanPage(event) {
-    //     event.preventDefault();
-    //     if (nameRecipe.value === "" || dirscriptionRecipe.value === "" || listOfStepsRecipeValid.length === [] || listOfIngridientsValid.length === []) {
-    //         saveAndCloseBTNP.disabled.toggle = true;
-    //         alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
-    //     } else {
-    //
-    //     }
-    // }
-    // saveAndCloseBTNP.addEventListener('click', closePlanPage);
-
-    // var newPlan = {
-    //     name: '',
-    //     description: '',
-    //     weekNumber: '',
-    //     pn: {
-    //         a: '',
-    //         b: '',
-    //         c: '',
-    //         d: '',
-    //         e: ''
-    //     },
-    //     wt: {
-    //         a: '',
-    //         b: '',
-    //         c: '',
-    //         d: '',
-    //         e: ''
-    //     },
-    //     sr: {
-    //         a: '',
-    //         b: '',
-    //         c: '',
-    //         d: '',
-    //         e: ''
-    //     },
-    //     cz: {
-    //         a: '',
-    //         b: '',
-    //         c: '',
-    //         d: '',
-    //         e: ''
-    //     },
-    //     pt: {
-    //         a: '',
-    //         b: '',
-    //         c: '',
-    //         d: '',
-    //         e: ''
-    //     },
-    //     sb: {
-    //         a: '',
-    //         b: '',
-    //         c: '',
-    //         d: '',
-    //         e: ''
-    //     },
-    //     nd: {
-    //         a: '',
-    //         b: '',
-    //         c: '',
-    //         d: '',
-    //         e: ''
-    //     },
-    // };
-    //
-    // var namePlan = document.querySelector('#name-plan');
-    // var descriptionPlan = document.querySelector('#discrption-plan');
-    // var weekNum = document.querySelector('#num-of-week');
-    //
-    // function savePlanObj(newObj){
-    //     var dataFromLocalStorage = [];
-    //     if (localStorage.getItem("newPlan") != null) {
-    //         dataFromLocalStorage = JSON.parse(localStorage.getItem("newPlan"));
-    //         dataFromLocalStorage.push(newObj);
-    //         localStorage.setItem("newPlan", JSON.stringify(dataFromLocalStorage));
-    //     }else{
-    //         dataFromLocalStorage.push(newObj);
-    //         localStorage.setItem("newPlan", JSON.stringify(dataFromLocalStorage));
-    //     }
-    //     alert("Dziku twój plan został zapisany");
-    // }
-    //
-    // function savePlan(event) {
-    //     event.preventDefault();
-    //     if (namePlan.value === "" || descriptionPlan.value === "" || weekNum === '') {
-    //         saveAndCloseBTNP.disabled.toggle = true;
-    //         alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
-    //     }
-    //     else {
-    //         saveAndCloseBTNP.disabled.toggle = false;
-    //         newPlan.name = namePlan.value;
-    //         newPlan.description = descriptionPlan.value;
-    //         newPlan.pn.a = document.querySelectorAll('.monday .selectOption').;
-    //         savePlanObj(newPlan);
-    //         screen.style.display = "block";
-    //         addNewPlanPage.style.display = "none";
-    //         formRecipe.reset();
-    //     }
-    // }
 
     // wybór opcji w planie
 
@@ -481,14 +381,26 @@ var formRecipe = document.querySelector("#new-recipes");
         sunday:[]
     };
 
+    
+
+    var days = Object.assign({})
+
     console.log(newPlan);
+
+    function pushDailyMeal(day){
+        day.forEach(function(i){
+            if(i.selected){
+                newPlan.day.push(i.value);
+            };
+        });
+    };
 
     var saveAndClosePlanBTN = document.querySelector('#new-plan-btn');
     var formPlan = document.querySelector('#new-plans');
     
-    function saveRecipeLocalStorage(event){
+    function savePlanLocalStorage(event){
         event.preventDefault();
-        if (namePlan.value === "" || descriptionPlan.value === ""){
+        if (namePlan.value === "" || descriptionPlan.value === "" || ){
             saveAndClosePlanBTN.disabled.toggle = true;
             alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
         }else{
@@ -531,7 +443,6 @@ var formRecipe = document.querySelector("#new-recipes");
                 newPlan.sunday.push(i.value);
                 }
             });
-            savePlanObj(newPlan);
             screen.style.display = "block";
             addNewPlanPage.style.display = "none";
 
@@ -553,7 +464,7 @@ var formRecipe = document.querySelector("#new-recipes");
         }
 
   
-        saveAndClosePlanBTN.addEventListener('click', saveRecipeLocalStorage);
+        saveAndClosePlanBTN.addEventListener('click', savePlanLocalStorage);
     
     
 });
