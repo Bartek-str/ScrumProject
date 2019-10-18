@@ -400,7 +400,7 @@ var formRecipe = document.querySelector("#new-recipes");
     
     function savePlanLocalStorage(event){
         event.preventDefault();
-        if (namePlan.value === "" || descriptionPlan.value === "" || ){
+        if (namePlan.value === "" || descriptionPlan.value === "" ){
             saveAndClosePlanBTN.disabled.toggle = true;
             alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
         }else{
