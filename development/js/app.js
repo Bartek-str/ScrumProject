@@ -366,6 +366,7 @@ var formRecipe = document.querySelector("#new-recipes");
     var namePlan = document.querySelector('#name-plan');
     var descriptionPlan = document.querySelector('.discrption-plan');
     var weekNum = document.querySelector('#num-of-week');
+    var meal=document.querySelectorAll('.meal select option')
 
 
     var newPlan={
@@ -381,26 +382,15 @@ var formRecipe = document.querySelector("#new-recipes");
         sunday:[]
     };
 
-    
+        console.log(newPlan);
 
-    var days = Object.assign({})
-
-    console.log(newPlan);
-
-    function pushDailyMeal(day){
-        day.forEach(function(i){
-            if(i.selected){
-                newPlan.day.push(i.value);
-            };
-        });
-    };
 
     var saveAndClosePlanBTN = document.querySelector('#new-plan-btn');
     var formPlan = document.querySelector('#new-plans');
     
     function savePlanLocalStorage(event){
         event.preventDefault();
-        if (namePlan.value === "" || descriptionPlan.value === "" ){
+        if (namePlan.value === "" || descriptionPlan.value === ""|| weekNum == ""){
             saveAndClosePlanBTN.disabled.toggle = true;
             alert("Zawiodłeś mnie dziku nie wypełniłeś wszystkich pól");
         }else{
@@ -445,7 +435,7 @@ var formRecipe = document.querySelector("#new-recipes");
             });
             screen.style.display = "block";
             addNewPlanPage.style.display = "none";
-
+            savePlanObj(newPlan);
             formPlan.reset();            
         };
     }
