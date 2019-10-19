@@ -362,7 +362,7 @@ var formRecipe = document.querySelector("#new-recipes");
     var namePlan = document.querySelector('#name-plan');
     var descriptionPlan = document.querySelector('.discrption-plan');
     var weekNum = document.querySelector('#num-of-week');
-    var meal=document.querySelectorAll('.meal select option')
+    var meal=document.querySelectorAll('.meal select option');
 
 
     var newPlan={
@@ -483,12 +483,11 @@ var formRecipe = document.querySelector("#new-recipes");
             weeknumPlan.classList.add('planWeek');
             var newAction = document.createElement('div');
             newPlani.appendChild(newAction);
-            newAction.classList.add('recipeAction');
+            newAction.classList.add('planAction');
             newAction.innerHTML = '<i class="far fa-edit"></i><i class="far fa-trash-alt"></i>';
         });
     }
 
     plany.addEventListener('click', renderAllPlan);
-    saveAndClosePlanBTN.addEventListener('click', renderAllPlan);
-
+    
 });
