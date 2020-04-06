@@ -489,5 +489,5 @@ var formRecipe = document.querySelector("#new-recipes");
     }
 
     plany.addEventListener('click', renderAllPlan);
-    
+
 });
